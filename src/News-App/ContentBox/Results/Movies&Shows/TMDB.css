@@ -1,0 +1,45 @@
+/* Ratings for Movies */
+.rating-badge-light {
+  background-image: linear-gradient(45deg, #f1c40f, #e74c3c);
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: inline-block;
+  color: #333; /* Add text color for contrast */
+}
+.rating-badge-dark {
+  background-image: linear-gradient(90deg, #3498db, #2ecc71);
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.rating-label {
+  font-weight: bold;
+}
+
+.rating-value {
+  font-size: 1.1em;
+}
+.rating {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.2rem;
+}
+
+.rating li {
+  display: inline;
+}
+.rating-value .mid {
+  color: #ff9800; /* Change the color to suit your design */
+}
+.rating-value .good {
+  color: #5aea2e; /* Change the color to suit your design */
+}
+.rating-value .bad {
+  color: #f70101; /* Change the color to suit your design */
+}
+.random-info li:nth-child(2) .runtime {
+  margin-left: -2.1rem; /* Adjust the margin as needed */
+}

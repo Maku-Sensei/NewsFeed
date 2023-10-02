@@ -1,0 +1,56 @@
+/* Define the styles for the round buttons */
+.round-button {
+  background-color: #3498db; /* Button background color */
+  color: #ffffff; /* Text color */
+  border: none; /* Remove button border */
+  border-radius: 50%; /* Make it round by setting border-radius to 50% */
+  padding: 15px 20px; /* Adjust padding as needed */
+  font-size: 16px; /* Set font size */
+  cursor: pointer; /* Add a pointer cursor on hover */
+  margin: 5px; /* Add some margin between buttons */
+}
+
+/* Add hover effect */
+.round-button:hover {
+  background-color: #2980b9; /* Change background color on hover */
+}
+#next-button {
+  background-color: #27ae60; /* Button background color */
+  color: #ffffff; /* Text color */
+  border: none; /* Remove button border */
+  border-radius: 50%; /* Make it round by setting border-radius to 50% */
+  padding: 15px 20px; /* Adjust padding as needed */
+  font-size: 16px; /* Set font size */
+  cursor: pointer; /* Add a pointer cursor on hover */
+  margin: 5px; /* Add some margin between buttons */
+}
+
+/* Add hover effect for the "Next Page" button */
+#next-button:hover {
+  background-color: #219d53; /* Change background color on hover */
+}
+.changeable-options {
+  width: 150px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+  font-size: 16px;
+}
+/* Style the select element */
+@media screen and (min-width: 768px) {
+  .changeable-options {
+    width: 200px; /* Set the width as per your preference */
+    padding: 10px; /* Add some padding for better appearance */
+    border: 1px solid #ccc; /* Add a border */
+    border-radius: 5px; /* Add rounded corners */
+    background-color: #fff; /* Set background color */
+    color: #333; /* Set text color */
+    font-size: 16px; /* Set font size */
+  }
+}
+
+/* Style the options within the select */
+.changeable-options option {
+  padding: 5px; /* Add padding to the options */
+}

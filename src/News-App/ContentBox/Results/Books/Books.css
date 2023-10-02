@@ -1,0 +1,12 @@
+.rating-value-books .mid {
+  color: #ff9800; /* Change the color to suit your design */
+}
+.rating-value-books .good {
+  color: #09c319; /* Change the color to suit your design */
+}
+.rating-value-books .bad {
+  color: #f70101; /* Change the color to suit your design */
+}
+.rating-value-books {
+  font-size: 1.1em;
+}

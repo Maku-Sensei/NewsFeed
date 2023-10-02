@@ -1,0 +1,19 @@
+/* Apply the animation to the elements with the 'animate' class */
+
+.arrow-container {
+  display: flex; /* Display arrow buttons in a row */
+  margin-top: -20px;
+  display: flex;
+  justify-content: center;
+}
+
+.arrow-button {
+  font-size: 24px;
+  cursor: pointer;
+}
+#right-curved-arrow {
+  flex-basis: 20%;
+}
+#left-curved-arrow {
+  flex-basis: 20%;
+}
