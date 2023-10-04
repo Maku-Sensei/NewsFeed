@@ -1,13 +1,13 @@
 const getIndexName = (ticker) => {
   switch (ticker) {
     case "DJI.INDX":
-      return "Dow Jones";
+      return "DowJones";
     case "NDX.INDX":
       return "Nasdaq";
     case "TECDAX.INDX":
-      return "Tec DAX";
+      return "TecDAX";
     case "SDAXI.INDX":
-      return "S DAX";
+      return "SDAX";
     case "GDAXI.INDX":
       return "DAX";
     case "RUT.INDX":
@@ -15,7 +15,7 @@ const getIndexName = (ticker) => {
     case "N225.INDX":
       return "Nikkei 225";
     case "SPY":
-      return "S&P 500";
+      return "S&P500";
     case "HSI.INDX":
       return "Hang Seng";
   }

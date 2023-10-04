@@ -22,7 +22,10 @@ const Stocks = () => {
     const gain = open < close;
     const currency = getCurrencyFromTicker(symbol);
     return (
-      <div key={symbol} className="text-xxxs flex sm:text-xs 2xl:text-base">
+      <div
+        key={symbol}
+        className="flex text-xxxs sm:text-xs md:text-sm 2xl:text-base"
+      >
         <h1 className="pr-1">{idx}</h1>
         <h2 className={gain ? " text-green-500" : " text-red-700"}>
           {close}
