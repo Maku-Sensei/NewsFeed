@@ -5,7 +5,6 @@ const Content = ({ data }) => {
   const language = useSelector((state) => state.language.value);
   if (language === "en") {
     const { abstract, title, url: articleUrl, multimedia, url } = data;
-    console.log("multi", multimedia);
     const { url: imgL } = multimedia[0];
     const altregex = /\/([^/]+)\.html$/;
     return (

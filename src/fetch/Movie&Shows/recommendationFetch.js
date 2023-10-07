@@ -6,8 +6,6 @@ const options = optionsTMDB;
 export const getRandomId = async ({ queryKey }) => {
   const isMovie = queryKey[1];
   const startingIndex = queryKey[2];
-  console.log("startingIndex", startingIndex);
-  console.log("isMovie", isMovie);
   if (isMovie) {
     const jsonFilePath = "./News-App/ContentBox/IdExports/filteredoutput.json";
     const res = await fetch(jsonFilePath);
@@ -32,7 +30,6 @@ export const getRandomId = async ({ queryKey }) => {
 const recommendationFetch = async ({ queryKey }) => {
   const isMovie = queryKey[1];
   const id = queryKey[2];
-  console.log("id", id);
 
   let res;
   let url;

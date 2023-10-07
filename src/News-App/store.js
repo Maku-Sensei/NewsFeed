@@ -27,11 +27,18 @@ import { topStoriesApi } from "../fetch/TopStories/topStoriesService";
 import { footballNewsApi } from "../fetch/FootballBox/FootballNewsService";
 import language from "./languageSlice";
 import { topStoriesDeApi } from "../fetch/TopStories/topStoriesDeService";
+import { guardianNewsApi } from "../fetch/fetchGuardianNewsService";
+import { NYTimesNewsApi } from "../fetch/fetchNYTNewsService";
 
 const store = configureStore({
   reducer: {
     //language
     language,
+
+    //Guardian News
+    [guardianNewsApi.reducerPath]: guardianNewsApi.reducer,
+    //NYTimes News
+    [NYTimesNewsApi.reducerPath]: NYTimesNewsApi.reducer,
 
     //ContentBox
     movie,
@@ -80,6 +87,8 @@ const store = configureStore({
       topStoriesApi.middleware,
       footballNewsApi.middleware,
       topStoriesDeApi.middleware,
+      guardianNewsApi.middleware,
+      NYTimesNewsApi.middleware,
     ),
 });
 

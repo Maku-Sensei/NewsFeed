@@ -4,7 +4,7 @@ import Stocks from "./Stocks";
 import { useDispatch, useSelector } from "react-redux";
 import { setLanguage } from "../languageSlice";
 import { useContext, useRef } from "react";
-import isPressed from "../MainContent/Context/IsPressed";
+import isPressed from "../MainContent/Context/Section";
 import darkmode from "./Darkmode";
 
 const Header = ({ setNewsParams }) => {

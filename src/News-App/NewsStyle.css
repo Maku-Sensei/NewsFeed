@@ -105,7 +105,6 @@ body {
   margin-left: 0;
   margin-top: 18rem;
   grid-template-areas:
-    "options ."
     "news  news"
     "market market";
 }
@@ -115,7 +114,6 @@ body {
     margin-top: 0;
     grid-template-areas:
       "top top"
-      "options options"
       "news news"
       "market football";
   }
@@ -125,7 +123,6 @@ body {
     margin-top: 0;
     grid-template-areas:
       "top top"
-      "options options"
       "news news"
       "market football ";
   }
@@ -134,13 +131,11 @@ body {
   .container-nocontent {
     grid-template-areas:
       "top football"
-      "options market"
       "news market";
   }
   .container {
     grid-template-areas:
       "top football"
-      "options market"
       "news market";
   }
 }
@@ -185,15 +180,12 @@ body {
   }
 }
 #options {
-  grid-area: options;
-  margin-left: 5rem;
-  margin-bottom: 3rem;
-  margin-top: -18rem;
-}
-@media screen and (min-width: 768px) {
-  #options {
-    margin-left: 20rem;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-left: 0;
+  width: 80%;
 }
 
 #main-news {
@@ -210,7 +202,7 @@ body {
     margin-left: 4rem;
     width: 1100px;
     font-size: 1rem;
-    margin-top: -3rem;
+    margin-top: -18rem;
   }
 }
 #market-movers {

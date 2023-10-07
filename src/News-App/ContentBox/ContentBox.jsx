@@ -161,7 +161,6 @@ const ContentBox = () => {
 
   //Results
   let results, data;
-  console.log("category", movieCategory);
   results = setResults(resultsArray, topic, categories);
   if (topic === "Movies") {
     if (movieCategory === "Reviews") {
@@ -198,8 +197,6 @@ const ContentBox = () => {
   } else if (topic === "Drama") {
     data = results[0]?.data?.results ?? [];
   }
-  console.log("results", results);
-  console.log("dataContent", data);
 
   dispatch(setData(data));
 

@@ -1,48 +1,60 @@
-import News from "./News";
-import areAllPropertiesNull from "../../general methods/ObjectProperties";
 import { useContext } from "react";
 import Page from "./Context/Page";
+import { useGetNewsQuery } from "../../fetch/fetchNYTNewsService";
+import News from "./News";
+import Section from "./Context/Section";
+import NewsQuery from "./Context/NewsQuery";
 
-let nullIdCounter = 0; // Counter for null IDs
-
-const generateUniqueKey = (source, publishedAt) => {
-  const sourceId =
-    source && source.id ? source.id : `default-${nullIdCounter++}`;
-  return `${sourceId}-${publishedAt}`;
-};
-
-const Results = ({ news }) => {
+const Results = () => {
+  const [section, setSection] = useContext(Section);
+  const [q, setQ] = useContext(NewsQuery);
   const [page, setPage] = useContext(Page);
+  const { isLoading: isLoadingNYTimes, data: dataNYTimes } = useGetNewsQuery({
+    q: q,
+    page: page,
+    section: section.length ? section[0] : "",
+  });
+  if (isLoadingNYTimes) {
+    return <div>Loading...</div>;
+  }
   return (
     <div>
-      {!news.length ? (
-        <h1>No News Found</h1>
+      {!dataNYTimes.length ? (
+        <div>
+          <h1>No results</h1>
+        </div>
       ) : (
-        news.map((article) => {
-          if (areAllPropertiesNull(article) || article.title === "[Removed]") {
-            return null;
-          }
-          const uniqueKey = generateUniqueKey(
-            article.source.id,
-            article.publishedAt,
-          );
+        dataNYTimes.map((news) => {
+          const {
+            headline,
+            byLine,
+            source: name,
+            abstract: description,
+            web_url: url,
+            multimedia,
+            _id: id,
+          } = news;
+          const imageUrl = multimedia[0]?.url;
+          const { main: title } = headline;
+          const props = {
+            title: title,
+            description: description,
+            url: url,
+            imageUrl: imageUrl,
+            name: name,
+            author: byLine?.author ?? "",
+          };
+          console.log("props", props);
+
+          // Corrected return statement
           return (
-            <News
-              title={article.title}
-              source={article.source}
-              key={uniqueKey}
-              description={article.description}
-              url={article.url}
-              imageUrl={article.urlToImage ? article.urlToImage : ""}
-              publishedAt={article.publishedAt}
-              content={article.content}
-              author={article.author}
-            />
+            <div key={id}>
+              <News {...props} />
+            </div>
           );
         })
       )}
-
-      <div className=" ml-70 flex justify-end pr-28  md:mr-14 xl:ml-0">
+      <div className=" ml-70 mr-2 flex justify-end pr-28 md:mr-14 xl:ml-0 xl:mr-0">
         <button
           className="round-button"
           onClick={() => {

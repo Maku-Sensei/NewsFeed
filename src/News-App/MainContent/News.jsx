@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
 
 const News = (props) => {
-  const { title, author, source, description, url, imageUrl } = props;
-  const { name } = source;
-  console.log("News", props);
+  const { title, description, url, imageUrl, name, author } = props;
+  const image_url = "https://www.nytimes.com/" + imageUrl;
   return (
     <div>
       <div className="mb-2 ml-20 flex w-96 flex-col justify-between border-b-2 md:ml-0 md:w-7/12 md:flex-col lg:w-10/12 lg:flex-row xl:w-11/12">
@@ -30,7 +29,7 @@ const News = (props) => {
         {imageUrl ? (
           <img
             className="mb-2 ml-3 h-auto max-w-xs rounded-lg"
-            src={imageUrl}
+            src={image_url}
             alt={title}
           ></img>
         ) : null}

@@ -1,20 +1,13 @@
-import fetchNewsTopHeadlines from "../fetch/fetchTopNewsApi";
-import fetchNewsEverything from "../fetch/fetchNewsEverything";
-import { useQuery } from "@tanstack/react-query";
 import Results from "./MainContent/Results";
 import { useContext, useState } from "react";
-import Options from "./MainContent/Options";
-import IsAnyChecked from "./MainContent/Context/IsAnyChecked";
-import ShowError from "./MainContent/ShowError";
-import ShowIsLoading from "./MainContent/ShowIsLoading";
 import ErrorBoundary from "./ErrorBoundary";
 import ContentBox from "./ContentBox/ContentBox";
-import Page from "./MainContent/Context/Page";
 import MarketMovers from "./MarketMovers/MarketMovers";
 import Header from "./Header/Header";
 import FootballBox from "./FootballBox/FootballBox";
 import TopStoriesSelect from "./TopStories/TopStoriesSelect";
 import darkmode from "./Header/Darkmode";
+import Options from "./MainContent/Options";
 const Newsfeed = () => {
   //light/dark mode
   const [isDarkmode, setDarkmode] = useContext(darkmode);
@@ -22,63 +15,11 @@ const Newsfeed = () => {
     ? document.body.classList.add("light")
     : document.body.classList.remove("light");
   const [isHide, setHide] = useState(false);
-
-  const [page, setPage] = useContext(Page);
-  const [requestParams, setRequestParams] = useState({
-    country: "us",
-    category: "business",
-    sources: "",
-    q: "",
-  });
-  const [showAllNews, setShowAllNews] = useContext(IsAnyChecked);
-
-  //Query
-  const resultsTop = useQuery(
-    ["newsTop", requestParams, page],
-    fetchNewsTopHeadlines,
-  );
-  const resultsAny = useQuery(
-    ["newsAny", requestParams, page],
-    fetchNewsEverything,
-  );
-  const results = showAllNews ? resultsAny : resultsTop;
-  const changeParams = (params) => {
-    setRequestParams(params);
-  };
-
-  //IsLoading
-  if (results.isLoading) {
-    return (
-      <ShowIsLoading
-        changeParams={changeParams}
-        requestParams={requestParams}
-      />
-    );
-  }
-
-  //No Options Selected
-  if (results.isError) {
-    return results.error.message ===
-      "Cannot read properties of null (reading 'ok')" ? (
-      <ShowError
-        setRequestParams={setRequestParams}
-        requestParams={requestParams}
-        changeParams={changeParams}
-      />
-    ) : (
-      <div className="error-pane">
-        <h2 className="text-center">Error</h2>
-      </div>
-    );
-  }
-
-  const data = results?.data?.articles ?? [];
-
-  //Page
+  //Newsfeed
   return (
     <div>
       <header>
-        <Header setNewsParams={setRequestParams} />
+        <Header />
       </header>
       <div style={{ height: "67px" }}></div> {/* Spacer with desired height */}
       <form
@@ -96,9 +37,6 @@ const Newsfeed = () => {
             <FootballBox />
           </section>
 
-          <section id="options">
-            <Options onParamsChange={changeParams} params={requestParams} />
-          </section>
           {/*Content*/}
           {/*className="flex flex-row justify-around"*/}
           <section className="hide-content-box fixed">
@@ -118,7 +56,10 @@ const Newsfeed = () => {
           )}
 
           <section id="main-news">
-            <Results news={data} />
+            <section id="options">
+              <Options />
+            </section>
+            <Results />
           </section>
           <section id="market-movers">
             <MarketMovers />

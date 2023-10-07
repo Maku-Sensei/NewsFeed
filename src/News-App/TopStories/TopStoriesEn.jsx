@@ -5,7 +5,7 @@ import shuffleArray from "../../general methods/shuffleArray";
 import TopStoriesSwiper from "./TopStoriesSwiper";
 
 const TopStoriesEn = () => {
-  const sectionNames = ["business", "politics", "us", "food", "fashion"];
+  const sectionNames = ["business", "politics", "us", "fashion"];
 
   const sectionData = {};
   let delayCounter = 0;
