@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import ButtonGroup from "./ButtonGroup.jsx";
 import NewsQuery from "./Context/NewsQuery";
+import { useSelector } from "react-redux";
 
 const Options = () => {
   const [q, setQ] = useContext(NewsQuery);
+  const language = useSelector((state) => state.language.value);
   return (
     <div
       className="grid w-4/12 grid-cols-1 rounded-md p-5 text-center font-semibold text-black"
@@ -25,9 +27,11 @@ const Options = () => {
           placeholder="Press Enter to search News"
         ></input>
       </section>
-      <section className="ml-36">
-        <ButtonGroup />
-      </section>
+      {language === "en" ? (
+        <section className="ml-36">
+          <ButtonGroup />
+        </section>
+      ) : null}
     </div>
   );
 };

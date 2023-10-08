@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 
 const News = (props) => {
-  const { title, description, url, imageUrl, name, author } = props;
-  const image_url = "https://www.nytimes.com/" + imageUrl;
+  const { title, description, url, imageUrl, name, author, language } = props;
+  const image_url =
+    language === "en" ? "https://www.nytimes.com/" + imageUrl : imageUrl;
   return (
     <div>
       <div className="mb-2 ml-20 flex w-96 flex-col justify-between border-b-2 md:ml-0 md:w-7/12 md:flex-col lg:w-10/12 lg:flex-row xl:w-11/12">

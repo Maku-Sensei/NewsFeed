@@ -8,6 +8,7 @@ import FootballBox from "./FootballBox/FootballBox";
 import TopStoriesSelect from "./TopStories/TopStoriesSelect";
 import darkmode from "./Header/Darkmode";
 import Options from "./MainContent/Options";
+
 const Newsfeed = () => {
   //light/dark mode
   const [isDarkmode, setDarkmode] = useContext(darkmode);
@@ -15,6 +16,7 @@ const Newsfeed = () => {
     ? document.body.classList.add("light")
     : document.body.classList.remove("light");
   const [isHide, setHide] = useState(false);
+  console.log(isHide);
   //Newsfeed
   return (
     <div>
@@ -41,6 +43,7 @@ const Newsfeed = () => {
           {/*className="flex flex-row justify-around"*/}
           <section className="hide-content-box fixed">
             <button
+              type="button"
               onClick={() => {
                 setHide(!isHide);
               }}

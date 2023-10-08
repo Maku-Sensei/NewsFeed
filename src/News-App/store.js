@@ -29,6 +29,7 @@ import language from "./languageSlice";
 import { topStoriesDeApi } from "../fetch/TopStories/topStoriesDeService";
 import { guardianNewsApi } from "../fetch/fetchGuardianNewsService";
 import { NYTimesNewsApi } from "../fetch/fetchNYTNewsService";
+import { tagesschauNewsApi } from "../fetch/tagesschauNewsService";
 
 const store = configureStore({
   reducer: {
@@ -39,6 +40,8 @@ const store = configureStore({
     [guardianNewsApi.reducerPath]: guardianNewsApi.reducer,
     //NYTimes News
     [NYTimesNewsApi.reducerPath]: NYTimesNewsApi.reducer,
+    //Tageschau Main News
+    [tagesschauNewsApi.reducerPath]: tagesschauNewsApi.reducer,
 
     //ContentBox
     movie,
@@ -89,6 +92,7 @@ const store = configureStore({
       topStoriesDeApi.middleware,
       guardianNewsApi.middleware,
       NYTimesNewsApi.middleware,
+      tagesschauNewsApi.middleware,
     ),
 });
 
