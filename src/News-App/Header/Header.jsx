@@ -4,12 +4,10 @@ import Stocks from "./Stocks";
 import { useDispatch, useSelector } from "react-redux";
 import { setLanguage } from "../languageSlice";
 import { useContext, useRef } from "react";
-import isPressed from "../MainContent/Context/Section";
 import darkmode from "./Darkmode";
 
-const Header = ({ setNewsParams }) => {
+const Header = () => {
   const dispatch = useDispatch();
-  const [selectedButtons, setSelectedButtons] = useContext(isPressed);
   const language = useSelector((state) => state.language.value);
   const [isDarkmode, setDarkmode] = useContext(darkmode);
   const mobileNavRef = useRef();
@@ -53,21 +51,6 @@ const Header = ({ setNewsParams }) => {
                   className="rounded-md border border-gray-300 px-2 py-1 text-gray-800 focus:border-blue-500 focus:outline-none"
                   onChange={(e) => {
                     dispatch(setLanguage(e.target.value));
-                    if (e.target.value === "en") {
-                      setNewsParams({
-                        country: "us",
-                        category: "business",
-                        q: "",
-                      });
-                      setSelectedButtons(["USA", "Business"]);
-                    } else if (e.target.value === "de") {
-                      setNewsParams({
-                        country: "de",
-                        category: "",
-                        q: "",
-                      });
-                      setSelectedButtons([]);
-                    }
                   }}
                   value={language}
                 >

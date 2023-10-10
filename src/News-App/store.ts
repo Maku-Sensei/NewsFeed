@@ -31,6 +31,8 @@ import { guardianNewsApi } from "../fetch/fetchGuardianNewsService";
 import { NYTimesNewsApi } from "../fetch/fetchNYTNewsService";
 import { tagesschauNewsApi } from "../fetch/tagesschauNewsService";
 
+export type RootState = ReturnType<typeof store.getState>;
+
 const store = configureStore({
   reducer: {
     //language

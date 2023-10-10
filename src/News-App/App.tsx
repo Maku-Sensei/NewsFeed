@@ -23,7 +23,7 @@ const queryClient = new QueryClient({
 });
 
 const App = () => {
-  const section = useState([]);
+  const section = useState("");
   const page = useState(1);
   const darkmode = useState(true);
   const newsQuery = useState("");
@@ -52,5 +52,6 @@ const App = () => {
 };
 
 const container = document.querySelector("#root");
+if (!container) throw new Error("No root element found");
 const root = createRoot(container);
 root.render(<App />);

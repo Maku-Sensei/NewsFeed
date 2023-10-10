@@ -9,7 +9,8 @@ import Page from "./Context/Page";
 import News from "./News";
 import NextPage from "./NextPage";
 import NewsQuery from "./Context/NewsQuery";
-import { useSelector } from "react-redux";
+
+import { TagesschauNewsAPIResponse } from "../../fetch/NewsAPIResponsesTypes";
 
 const ResultsDe = () => {
   const [q, setQ] = useContext(NewsQuery);
@@ -25,10 +26,13 @@ const ResultsDe = () => {
   if (isLoadingSearch) {
     return <div>Loading...</div>;
   }
-  let data = [];
+  console.log("dataAll", dataAll);
+  console.log("dataSearch", dataSearch);
+  let data: TagesschauNewsAPIResponse[] = [];
   if (!q) {
+    if (!dataAll) return null;
     const { news, regional } = dataAll;
-    const mixedArray = [];
+    const mixedArray: TagesschauNewsAPIResponse[] = [];
 
     for (const item of news.concat(regional)) {
       //Check for duplicates
@@ -49,15 +53,14 @@ const ResultsDe = () => {
       data = chunkedArray[page - 1];
     }
   } else {
+    if (!dataSearch) return null;
     data = dataSearch;
-    console.log("dataSearch", data);
   }
   return (
     <div>
       {!data.length ? null : (
         <div>
           {data.map((news) => {
-            console.log("news", news);
             const {
               title,
               teaserImage,
