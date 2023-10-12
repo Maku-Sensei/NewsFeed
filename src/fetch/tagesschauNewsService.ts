@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import {
+  NewsSearchParams,
   TagesschauNewsAPIResponse,
-  TagesschauSearchParams,
   tagesschauNewsAPIResponseAll,
 } from "./NewsAPIResponsesTypes";
 
@@ -10,6 +10,7 @@ const startUrl = "https://www.tagesschau.de/api2u/";
 type ApiResponseData = {
   searchResults: TagesschauNewsAPIResponse[];
 };
+interface TagesschauNewsAPIParams extends NewsSearchParams {}
 
 export const tagesschauNewsApi = createApi({
   reducerPath: "tagesschauNews",
@@ -23,7 +24,7 @@ export const tagesschauNewsApi = createApi({
     }),
     getDeNews: builder.query<
       TagesschauNewsAPIResponse[],
-      TagesschauSearchParams
+      TagesschauNewsAPIParams
     >({
       query: ({ q, page }) =>
         `search/?searchText=${q}&pageSize=10&resultPage=${page}`,

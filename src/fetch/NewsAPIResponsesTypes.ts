@@ -1,3 +1,4 @@
+import { Language } from "../News-App/languageSlice";
 export interface TagesschauNewsAPIResponse {
   title: string;
   teaserImage: {
@@ -19,7 +20,38 @@ export type tagesschauNewsAPIResponseAll = {
   type: string;
 };
 
-export interface TagesschauSearchParams {
+export interface NewsSearchParams {
   q: string;
   page: number;
 }
+type NYTimesMultimedia = [
+  {
+    url?: string;
+  },
+];
+export interface NYTimesNewsAPIResponse {
+  headline: {
+    main: string;
+  };
+  byline: {
+    original: string | null;
+  };
+  source: string;
+  abstract: string;
+  web_url: string;
+  _id: string;
+  multimedia: NYTimesMultimedia | [];
+}
+export interface NYTTimesNewsParams extends NewsSearchParams {
+  section: string;
+}
+
+export type NewsProps = {
+  title: string;
+  description: string;
+  url: string;
+  imageUrl: string;
+  name: string;
+  author: string;
+  language: Language;
+};

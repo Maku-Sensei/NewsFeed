@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+export type Language = "en" | "de";
 export const languageSlice = createSlice({
   name: "language",
   initialState: {

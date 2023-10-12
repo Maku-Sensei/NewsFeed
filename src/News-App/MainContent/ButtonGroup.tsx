@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import Section from "./Context/Section";
+import Section, { SectionType } from "./Context/Section";
 
 const ButtonGroup = () => {
   const [selectedButton, setSelectedButton] = useContext(Section);
-  const buttons = [
+  const buttons: SectionType[] = [
     "U.S.",
     "World",
     "Business",

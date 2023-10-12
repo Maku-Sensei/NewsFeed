@@ -5,6 +5,7 @@ import News from "./News";
 import Section from "./Context/Section";
 import NewsQuery from "./Context/NewsQuery";
 import NextPage from "./NextPage";
+import { NewsProps } from "../../fetch/NewsAPIResponsesTypes";
 
 const ResultsEn = () => {
   const [section, setSection] = useContext(Section);
@@ -21,6 +22,7 @@ const ResultsEn = () => {
   if (typeof dataNYTimes === "undefined") {
     return <div>Loading...</div>;
   }
+  console.log("dataNYTimes", dataNYTimes);
   return (
     <div>
       {!dataNYTimes.length ? (
@@ -31,22 +33,23 @@ const ResultsEn = () => {
         dataNYTimes.map((news) => {
           const {
             headline,
-            byLine,
+            byline,
             source: name,
             abstract: description,
             web_url: url,
             multimedia,
             _id: id,
           } = news;
-          const imageUrl = multimedia[0]?.url;
+          const imageUrl = multimedia[0]?.url ?? "";
+          console.log("imageUrl", imageUrl);
           const { main: title } = headline;
-          const props = {
+          const props: NewsProps = {
             title: title,
             description: description,
             url: url,
             imageUrl: imageUrl,
             name: name,
-            author: byLine?.author ?? "",
+            author: byline?.original ?? "",
             language: "en",
           };
 

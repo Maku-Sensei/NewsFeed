@@ -10,7 +10,10 @@ import News from "./News";
 import NextPage from "./NextPage";
 import NewsQuery from "./Context/NewsQuery";
 
-import { TagesschauNewsAPIResponse } from "../../fetch/NewsAPIResponsesTypes";
+import {
+  NewsProps,
+  TagesschauNewsAPIResponse,
+} from "../../fetch/NewsAPIResponsesTypes";
 
 const ResultsDe = () => {
   const [q, setQ] = useContext(NewsQuery);
@@ -69,8 +72,8 @@ const ResultsDe = () => {
               firstSentence: description,
             } = news;
 
-            const imageUrl = teaserImage?.imageVariants["16x9-1920"] ?? null;
-            const props = {
+            const imageUrl = teaserImage?.imageVariants["16x9-1920"] ?? "";
+            const props: NewsProps = {
               title: title,
               description: description,
               url: url,

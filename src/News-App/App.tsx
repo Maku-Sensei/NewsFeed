@@ -4,7 +4,7 @@ import { createRoot } from "react-dom/client";
 import Newsfeed from "./Newsfeed";
 
 import { useState } from "react";
-import Section from "./MainContent/Context/Section";
+import Section, { SectionType } from "./MainContent/Context/Section";
 
 import Page from "./MainContent/Context/Page";
 import store from "./store";
@@ -23,7 +23,7 @@ const queryClient = new QueryClient({
 });
 
 const App = () => {
-  const section = useState("");
+  const section = useState<SectionType>("");
   const page = useState(1);
   const darkmode = useState(true);
   const newsQuery = useState("");

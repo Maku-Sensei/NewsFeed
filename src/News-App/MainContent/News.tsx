@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
+import { NewsProps } from "../../fetch/NewsAPIResponsesTypes";
 
-const News = (props) => {
+const News = (props: NewsProps) => {
   const { title, description, url, imageUrl, name, author, language } = props;
   const image_url =
     language === "en" ? "https://www.nytimes.com/" + imageUrl : imageUrl;
