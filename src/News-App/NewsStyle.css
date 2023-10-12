@@ -177,6 +177,7 @@ body {
     width: 100%;
     grid-area: football;
     margin-top: 0.5rem;
+    margin-left: 0rem;
   }
 }
 #options {

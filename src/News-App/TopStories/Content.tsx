@@ -1,15 +1,16 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { RootState } from "../store";
 
 const Content = ({ data }) => {
-  const language = useSelector((state) => state.language.value);
+  const language = useSelector((state: RootState) => state.language.value);
   if (language === "en") {
-    const { abstract, title, url: articleUrl, multimedia, url } = data;
+    const { abstract, title, url: articleUrl, multimedia } = data;
     const { url: imgL } = multimedia[0];
     const altregex = /\/([^/]+)\.html$/;
     return (
       <div className="swiper-carousel-animate-opacity">
-        <Link to={url} target="_blank">
+        <Link to={articleUrl} target="_blank">
           <img src={imgL} alt={articleUrl.match(altregex)}></img>
           <div className="slide-content text-white">
             <h2>{title}</h2>

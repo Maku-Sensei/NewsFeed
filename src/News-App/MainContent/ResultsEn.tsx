@@ -22,7 +22,7 @@ const ResultsEn = () => {
   if (typeof dataNYTimes === "undefined") {
     return <div>Loading...</div>;
   }
-  console.log("dataNYTimes", dataNYTimes);
+
   return (
     <div>
       {!dataNYTimes.length ? (
@@ -41,7 +41,6 @@ const ResultsEn = () => {
             _id: id,
           } = news;
           const imageUrl = multimedia[0]?.url ?? "";
-          console.log("imageUrl", imageUrl);
           const { main: title } = headline;
           const props: NewsProps = {
             title: title,

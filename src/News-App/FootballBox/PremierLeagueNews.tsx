@@ -5,6 +5,7 @@ const PremierLeagueNews = () => {
   const { isLoading: premierLeagueLoading, data: premierLeagueData } =
     useGetLeagueNewsQuery({ q: "premier-league", size: 4 });
   if (premierLeagueLoading) return <h1>Loading...</h1>;
+  if (!premierLeagueData) return <h1>Nothing Found</h1>;
   return (
     <div className="mt-10">
       {!premierLeagueData.length ? null : (

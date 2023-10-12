@@ -1,4 +1,4 @@
-const getTime = (dateString) => {
+const getTime = (dateString: string) => {
   const date = new Date(dateString);
 
   const hours = date.getHours();

@@ -5,7 +5,7 @@ const BundesLigaNews = () => {
   const { isLoading: bundesLigaLoading, data: bundesLigaData } =
     useGetLeagueNewsQuery({ q: "bundesliga", size: 3 });
   if (bundesLigaLoading) return <h1>Loading...</h1>;
-
+  if (!bundesLigaData) return <h1>Nothing Found</h1>;
   return (
     <div>
       {!bundesLigaData.length ? null : (

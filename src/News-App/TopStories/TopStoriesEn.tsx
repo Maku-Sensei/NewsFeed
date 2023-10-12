@@ -1,13 +1,29 @@
 import { useGetTopStoriesQuery } from "../../fetch/TopStories/topStoriesService";
 import { isObjectInSet } from "../../general methods/ObjectProperties";
 import shuffleArray from "../../general methods/shuffleArray";
-
 import TopStoriesSwiper from "./TopStoriesSwiper";
 
-const TopStoriesEn = () => {
-  const sectionNames = ["business", "politics", "us", "fashion"];
+import {
+  TopStoriesEnParams,
+  TopStoriesEnResponse,
+} from "../../fetch/TopStories/topStoriesTypes";
 
-  const sectionData = {};
+type SectionData = {
+  [section in TopStoriesEnParams]?: {
+    isLoading: boolean;
+    data?: TopStoriesEnResponse[];
+  };
+};
+
+const TopStoriesEn = () => {
+  const sectionNames: TopStoriesEnParams[] = [
+    "business",
+    "politics",
+    "us",
+    "fashion",
+  ];
+
+  const sectionData: SectionData = {};
   let delayCounter = 0;
   // Fetch data for each section
   sectionNames.forEach(async (section) => {
@@ -29,12 +45,11 @@ const TopStoriesEn = () => {
   if (isLoadingFlags.some((flag) => flag)) {
     return <h1>Loading...</h1>;
   }
-
   // Combine data from all sections
-  const combinedArray = [];
+  const combinedArray: TopStoriesEnResponse[] = [];
 
   for (const section in sectionData) {
-    const data = sectionData[section]?.data || [];
+    const data = sectionData[section as TopStoriesEnParams]?.data ?? [];
     combinedArray.push(...data.slice(0, 5));
   }
   const combinedSet = new Set(combinedArray);
