@@ -2,6 +2,7 @@ import { useGetTopStoriesQuery } from "../../fetch/TopStories/topStoriesService"
 import { isObjectInSet } from "../../general methods/ObjectProperties";
 import shuffleArray from "../../general methods/shuffleArray";
 import TopStoriesSwiper from "./TopStoriesSwiper";
+import ErrorBoundary from "../ErrorBoundary";
 
 import {
   TopStoriesEnParams,
@@ -70,4 +71,13 @@ const TopStoriesEn = () => {
 
   return <TopStoriesSwiper data={filteredArray} />;
 };
-export default TopStoriesEn;
+function TopStoriesEnErrorBoundary() {
+  return (
+    <ErrorBoundary
+      errorComponent={<h1>Something went wrong with TopStoriesDE</h1>}
+    >
+      <TopStoriesEn />
+    </ErrorBoundary>
+  );
+}
+export default TopStoriesEnErrorBoundary;

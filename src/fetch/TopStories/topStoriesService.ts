@@ -14,7 +14,6 @@ export const topStoriesApi = createApi({
     getTopStories: builder.query<TopStoriesEnResponse[], TopStoriesEnParams>({
       query: (section) => `${section}.json?api-key=${NYTimesBreakingNewsKey}`,
       transformResponse: (response: TopStoriesEnResponseData) => {
-        console.log(response);
         return response.results;
       },
     }),

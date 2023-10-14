@@ -18,7 +18,6 @@ export const footballNewsApi = createApi({
       query: ({ q, size }) =>
         `search?show-fields=headline,thumbnail,shortUrl&section=football&page-size=${size}&q=${q}&api-key=${GuardianApiKey}`,
       transformResponse: (response: FootballNewsAPIResponseData) => {
-        console.log(response);
         return response.response.results;
       },
     }),

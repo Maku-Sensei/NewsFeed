@@ -7,12 +7,16 @@ import stockFetch from "../../fetch/MarketMovers/stockFetch";
 import getIndexName from "./getIndexName";
 import getCurrencyFromTicker from "./getCurrency";
 import CurrencyIcon from "./CurrencyIcon";
+import { StockHeaderAPIResponse } from "./HeaderTypes";
 
 const Stocks = () => {
   const symbols = [
     "DJI.INDX,SPY,NDX.INDX,RUT.INDX,TECDAX.INDX,GDAXI.INDX,SDAXI.INDX,N225.INDX,HSI.INDX",
   ];
-  const results = useQuery(["headerStocks", symbols], stockFetch);
+  const results = useQuery<StockHeaderAPIResponse>(
+    ["headerStocks", symbols],
+    stockFetch,
+  );
   const data = results.data?.data ?? [];
   return data.map((index) => {
     const { open, close, symbol } = index;

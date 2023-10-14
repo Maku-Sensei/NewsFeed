@@ -8,8 +8,20 @@ import "swiper/scss/autoplay";
 import "swiper/scss/pagination";
 import "swiper/scss/virtual";
 import Content from "./Content";
+import {
+  TopStoriesDeResponse,
+  TopStoriesEnResponse,
+} from "../../fetch/TopStories/topStoriesTypes";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 
-const TopStoriesSwiper = ({ data }) => {
+interface TopStoriesSwiperProps {
+  data: TopStoriesDeResponse[] | TopStoriesEnResponse[];
+}
+
+const TopStoriesSwiper: React.FC<TopStoriesSwiperProps> = ({ data }) => {
+  const language = useSelector((state: RootState) => state.language.value);
+
   return (
     <Swiper
       modules={[Autoplay, Navigation, Pagination, EffectCarousel]}
@@ -31,19 +43,14 @@ const TopStoriesSwiper = ({ data }) => {
     >
       {!data.length
         ? null
-        : data.map(
-            (
-              article,
-              index, // Added the index parameter
-            ) => (
-              <SwiperSlide key={index}>
-                {" "}
-                {/* Added a key prop */}
-                <Content data={article} />
-              </SwiperSlide>
-            ),
-          )}
+        : data.map((article, index) => (
+            <SwiperSlide key={index}>
+              <Content data={article} language={language} />{" "}
+              {/* Enclosed within {} */}
+            </SwiperSlide>
+          ))}
     </Swiper>
   );
 };
+
 export default TopStoriesSwiper;

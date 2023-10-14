@@ -4,23 +4,24 @@ import {
   faEuroSign,
   faYenSign,
 } from "@fortawesome/free-solid-svg-icons";
+import { Currency } from "./HeaderTypes";
 
-const CurrencyIcon = ({ currency }) =>
+const CurrencyIcon = ({ currency }: { currency: Currency }) =>
   currency === "USD" ? (
     <FontAwesomeIcon
       icon={faDollarSign}
       style={{ color: "#050505" }}
-      size="s"
+      size="sm"
     />
   ) : currency === "EUR" ? (
     <FontAwesomeIcon icon={faEuroSign} style={{ color: "#050505" }} size="sm" />
   ) : currency === "JPY" ? (
-    <FontAwesomeIcon icon={faYenSign} size="s" style={{ color: "#050505" }} />
+    <FontAwesomeIcon icon={faYenSign} size="sm" style={{ color: "#050505" }} />
   ) : (
     <FontAwesomeIcon
       icon={faDollarSign}
       style={{ color: "#050505" }}
-      size="s"
+      size="sm"
     />
   );
 

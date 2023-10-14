@@ -1,4 +1,6 @@
-const getIndexName = (ticker) => {
+import { StockHeaderTicker } from "./HeaderTypes";
+
+const getIndexName = (ticker: StockHeaderTicker) => {
   switch (ticker) {
     case "DJI.INDX":
       return "DowJones";

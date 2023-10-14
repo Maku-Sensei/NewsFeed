@@ -5,12 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { setLanguage } from "../languageSlice";
 import { useContext, useRef } from "react";
 import darkmode from "./Darkmode";
+import { RootState } from "../store";
+import { MutableRefObject } from "react";
 
 const Header = () => {
   const dispatch = useDispatch();
-  const language = useSelector((state) => state.language.value);
+  const language = useSelector((state: RootState) => state.language.value);
   const [isDarkmode, setDarkmode] = useContext(darkmode);
-  const mobileNavRef = useRef();
+  const mobileNavRef: MutableRefObject<HTMLDivElement | null> = useRef(null);
 
   return (
     <header>
@@ -74,8 +76,11 @@ const Header = () => {
         <button
           className="hamburger"
           onClick={(e) => {
-            e.target.classList.toggle("is-active");
-            mobileNavRef.current.classList.toggle("is-active");
+            if (e.target instanceof HTMLElement) {
+              e.target.classList.toggle("is-active");
+              if (mobileNavRef.current)
+                mobileNavRef.current.classList.toggle("is-active");
+            }
           }}
         >
           <div className="bar"></div>
